@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en-US" class="transparentSkybridgeBackground desktopSkybridge light" data-theme="light" style="color-scheme: light; --safe-area-inset-top: 0px; --safe-area-inset-bottom: 0px; --safe-area-inset-left: 0px; --safe-area-inset-right: 0px;"><head><style>@layer sandbox-defaults{html,body,#root{margin:0;padding:0}}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>迷你超市 · 数学密室逃脱</title>
+<style>
+:root{--ink:#284b49;--green:#367d6e;--cream:#fffdf5;--line:#d9e7df;--yellow:#f3c764}*{box-sizing:border-box}body{margin:0;overflow:hidden;background:#e7f2ed;font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #e4ab3c;outline-offset:3px}button:disabled{cursor:default}#world{position:fixed;inset:0;width:100%;height:100%;touch-action:none;outline:none}.vignette{position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,#eaf4eb85,transparent 25%,transparent 75%,#e7f2eda8)}header{position:fixed;top:20px;left:24px;right:24px;display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}.brand,.header-actions,.panel,.tools{pointer-events:auto}.brand{display:flex;align-items:center;gap:12px;padding:12px 18px;background:#fffdf3eb;border:1px solid #fff;border-radius:18px;box-shadow:0 5px 25px #3553490d}.logo{width:39px;height:39px;background:#508c78;color:#fff4c8;display:grid;place-items:center;border-radius:12px;font-size:25px}.brand b{display:block;font-size:17px;letter-spacing:1px}.brand small{display:block;margin-top:4px;color:#6a8a7c;font-size:11px}.header-actions{display:flex;gap:8px}.btn{border:1px solid #d8e3d8;background:#fffdf4ed;border-radius:12px;padding:11px 16px;color:var(--ink);font-size:13px;box-shadow:0 4px 15px #274c4008}.btn:hover{background:#f2f8ec}.primary{border:0;background:var(--green);color:white;padding:13px 20px;border-radius:11px;font-weight:600}.primary:hover{background:#296456}.panel{position:fixed;left:24px;top:115px;width:204px;border:1px solid #ffffffdb;border-radius:20px;background:#fffdf5e8;backdrop-filter:blur(18px);padding:20px;box-shadow:0 7px 35px #33584612}.eyebrow{font-size:11px;color:#7d967b;letter-spacing:2px}.panel h1{font-size:24px;line-height:1.5;margin:10px 0 8px}.panel p{font-size:12px;line-height:1.85;color:#6a8276;margin:0 0 15px}.mission-list{display:grid;gap:7px}.mission{width:100%;display:flex;align-items:center;gap:9px;border:1px solid #e0e9dd;background:#fffefa;border-radius:10px;padding:10px;text-align:left;font-size:12px;color:#426051}.mission:hover{background:#edf6e7;border-color:#a9c2a5}.mission .n{width:23px;height:23px;display:grid;place-items:center;border-radius:7px;background:#f4edd8;font-size:11px;color:#9f8855}.mission.done{background:#e8f3e4}.mission.done .n{background:#5b9278;color:white}.mission .status{margin-left:auto;font-size:10px;color:#6c9470}.tools{position:fixed;right:24px;bottom:128px;display:flex;gap:7px}.tools button{width:41px;height:41px;padding:0;font-size:20px}.bottom{position:fixed;bottom:22px;left:24px;right:24px;display:flex;align-items:end;justify-content:space-between;gap:20px;pointer-events:none}.guidance{background:#fffdf2de;border:1px solid #fff;padding:12px 16px;border-radius:12px;font-size:12px;line-height:1.9;color:#617e6d;max-width:270px}.inventory{pointer-events:auto;display:flex;align-items:center;gap:16px;padding:15px 18px;border:1px solid #fff;border-radius:18px;background:#fffdf5ee;backdrop-filter:blur(16px);box-shadow:0 5px 35px #325e4212}.inv-title{font-size:12px;line-height:1.8;white-space:nowrap}.inv-title small{display:block;color:#79937d;font-size:10px}.digits{display:flex;gap:6px}.digit{position:relative;display:grid;place-items:center;width:37px;height:46px;border:1px solid #dfe8d7;border-radius:9px;background:#f6f5e9;color:#a7b39e;font-size:22px}.digit small{position:absolute;left:5px;top:2px;font-size:9px;color:#9baf95}.digit.found{background:#e6f1d9;color:#43784e;border-color:#bbd0a4}.exit-btn{white-space:nowrap;font-size:13px}#labels{position:fixed;inset:0;pointer-events:none}.hotspot{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;display:flex;gap:6px;align-items:center;border:2px solid #fff;background:#fffdf1f2;padding:5px 10px 5px 5px;color:#39584c;border-radius:22px;box-shadow:0 4px 16px #254e3622;font-size:11px;white-space:nowrap}.hotspot span{display:grid;place-items:center;width:23px;height:23px;background:#f1cc72;border-radius:50%;font-size:11px}.hotspot.done span{background:#67a188;color:#fff}.hotspot:hover{background:#eef8e6}.hotspot.hidden{display:none}#tooltip{position:fixed;z-index:4;pointer-events:none;display:none;background:#335d50ed;color:#fff8dd;border-radius:10px;padding:9px 13px;font-size:12px}.overlay{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:24px;background:#254f423c;backdrop-filter:blur(7px)}.overlay.open{display:flex}.card{position:relative;display:grid;grid-template-columns:37% 63%;width:min(870px,100%);max-height:92dvh;overflow:auto;border:1px solid #fff;border-radius:24px;background:linear-gradient(135deg,#fffef2ed,#eff8eddf);backdrop-filter:blur(28px);box-shadow:0 25px 90px #284f4333}.art{background:radial-gradient(circle at 50% 40%,#f8edc5,#d2e4c8);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:28px;min-height:440px}.art svg{width:100%;max-width:250px;filter:drop-shadow(0 13px 7px #516d3920)}.art small{font-size:11px;color:#72846c;letter-spacing:2px;margin-top:20px}.card-body{padding:40px 38px 28px}.card h2{font-size:27px;margin:12px 0 20px;line-height:1.35}.task-type{display:inline-block;background:#e1edd8;color:#5b8058;padding:5px 10px;border-radius:8px;font-size:11px}.question{font-size:17px;line-height:1.95;margin:20px 0;white-space:pre-wrap}.answer-label{display:block;font-size:12px;margin-bottom:8px;color:#71836c}.answer-row{display:flex;gap:8px}input{min-width:0;width:100%;border:1px solid #becfb5;background:#ffffffa8;border-radius:10px;padding:13px;color:var(--ink);font-size:17px}.answer-row button{white-space:nowrap;font-size:13px}.feedback{min-height:28px;margin:13px 0;font-size:13px;line-height:1.8;color:#537f49}.feedback.error{color:#a2683e}.hints{display:grid;gap:7px}.hint{background:#ffffff7d;border:1px solid #dce7d0;border-radius:9px;padding:10px 12px;font-size:12px;line-height:1.8;color:#5e7656}.hint b{display:block;font-size:10px;color:#8b9b65}.return{border:0;background:transparent;color:#6b836a;padding:12px 0 0;font-size:12px;text-decoration:underline;text-underline-offset:4px}.solved-badge{color:#56804e;font-size:12px;margin-top:10px}.simple{display:block;width:min(470px,100%);padding:38px;text-align:center}.simple p{font-size:14px;line-height:1.9;color:#6c816d}.simple .eyebrow{margin-top:10px}.bigicon{width:65px;height:65px;margin:auto;border-radius:20px;background:#e6efcc;color:#688c56;display:grid;place-items:center;font-size:34px}.lock-input{text-align:center;letter-spacing:12px;font-size:30px;margin:14px 0}.simple .primary{width:100%}.help-card{text-align:left}.help-card h2{margin-top:10px}.help-card p{font-size:13px}.close{position:absolute;right:13px;top:11px;width:30px;height:30px;border:0;border-radius:50%;background:#4e754610;color:#6d8161;font-size:21px}.win-card{background:linear-gradient(130deg,#fff6cf,#e3f0d7)}#toast{position:fixed;z-index:25;top:100px;left:50%;transform:translate(-50%,-10px);opacity:0;pointer-events:none;transition:.25s;background:#355e50;color:#fffbea;border:1px solid #eff6de;padding:12px 18px;border-radius:12px;font-size:13px;max-width:90%;text-align:center}#toast.show{opacity:1;transform:translate(-50%,0)}#loading{position:fixed;inset:0;z-index:30;display:grid;place-content:center;text-align:center;background:#eef5e5;padding:30px}#loading h2{font-size:30px;color:#417a65}#loading p{font-size:13px;color:#76876a;line-height:1.9;max-width:440px}.load-logo{font-size:52px}#loading button{max-width:180px;margin:15px auto}
+@media(max-width:850px){header{left:14px;right:14px;top:14px}.brand{padding:10px 12px;gap:8px}.brand b{font-size:14px}.brand small{font-size:9px}.logo{width:33px;height:33px;font-size:22px}.header-actions .btn{padding:10px;font-size:11px}.panel{left:14px;top:100px;width:145px;padding:13px}.panel h1{font-size:19px;margin:5px 0 10px}.panel p{display:none}.mission-list{gap:5px}.mission{padding:7px;font-size:10px;gap:6px}.mission .n{width:20px;height:20px}.mission .status{font-size:9px}.bottom{left:14px;right:14px;bottom:14px;justify-content:center}.guidance{display:none}.inventory{padding:12px;gap:9px}.inv-title{font-size:10px}.inv-title small{font-size:8px}.digits{gap:4px}.digit{width:30px;height:39px;font-size:20px}.exit-btn{padding:12px 13px;font-size:11px}.tools{right:14px;bottom:100px}.tools button{width:35px;height:35px}.hotspot{font-size:10px;padding:4px 7px 4px 4px;gap:4px}.hotspot span{width:20px;height:20px}.card-body{padding:29px 25px 23px}.question{font-size:16px}.art{min-height:380px}.card h2{font-size:23px}}
+@media(max-width:600px){.panel{width:126px;top:95px;padding:10px;background:#fffdf5db}.panel .eyebrow{font-size:9px;letter-spacing:1px}.panel h1{font-size:17px}.mission{font-size:10px;padding:6px 4px}.mission .status{display:none}.header-actions{gap:5px}.brand small{display:none}.brand b{font-size:12px}.brand{padding:8px}.logo{width:29px;height:29px;font-size:19px}.inventory{gap:8px;padding:10px}.digit{width:26px;height:35px}.inv-title{font-size:9px}.exit-btn{padding:11px 10px}.overlay{padding:13px}.card{grid-template-columns:1fr;border-radius:19px}.art{min-height:0;height:140px;padding:12px}.art svg{height:120px;width:145px}.art small{display:none}.card-body{padding:20px 22px}.card h2{font-size:22px;margin:9px 0 11px}.question{font-size:15px;line-height:1.85;margin:14px 0}.simple{padding:30px 23px}.hotspot{font-size:9px}.hints{gap:5px}.hint{padding:7px 10px;font-size:11px}.feedback{margin:10px 0}.tools{bottom:88px;gap:5px}#toast{top:79px;font-size:12px}.answer-row button{padding:12px 13px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.teacher-card{display:block;width:min(940px,100%);padding:32px;max-height:92dvh;overflow:auto}.teacher-card h2{font-size:26px;margin:10px 0}.teacher-intro{font-size:12px;color:#6c816d;line-height:1.9;max-width:800px}.teacher-tabs{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}.teacher-tabs button{border:1px solid #c5d7bc;background:#fffdf4;color:#55764f;padding:9px 12px;border-radius:10px;font-size:12px}.teacher-tabs button[aria-selected="true"]{background:#367d6e;color:#fff;border-color:#367d6e}.teacher-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}.teacher-fields label{display:block;font-size:12px;line-height:1.9;color:#617958}.teacher-fields .wide{grid-column:1/-1}.teacher-fields input,.teacher-fields textarea{display:block;width:100%;margin-top:5px;border:1px solid #c1d3b8;border-radius:9px;background:#fffdf7cc;padding:11px;font:14px "Microsoft YaHei",sans-serif;color:#284b49}.teacher-fields textarea{resize:vertical;min-height:76px}.teacher-fields small{display:block;color:#869579;font-size:10px;margin-top:4px}.teacher-hints{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;grid-column:1/-1}.teacher-footer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0 8px}.teacher-footer button{font-size:12px}.teacher-password{font-size:12px;color:#728265;margin:18px 0 0}.teacher-password strong{letter-spacing:4px;color:#367d6e}.teacher-message{font-size:12px;line-height:1.9;color:#647f57;min-height:25px;white-space:pre-wrap}.teacher-note{font-size:11px;color:#839074;line-height:1.8}.copy-source{display:block;width:100%;height:150px;font:11px monospace;color:#284b49;background:#fff;border:1px solid #b5c9ae;border-radius:9px;padding:10px;margin-top:8px}.teacher-backup{margin-top:10px}.teacher-backup summary{font-size:12px;color:#5b7f57;cursor:pointer}.teacher-usage{font-size:11px;color:#7a8a6d;line-height:1.8}
+@media(max-width:600px){header .brand small{display:none}.header-actions{gap:4px}.header-actions .btn{padding:9px 6px;font-size:10px}.brand b{font-size:11px}.logo{width:24px;height:27px}.brand{gap:5px;padding:7px}.teacher-card{padding:28px 18px}.teacher-fields{grid-template-columns:1fr}.teacher-hints{grid-template-columns:1fr}.teacher-tabs button{padding:7px 9px;font-size:11px}.teacher-card h2{font-size:22px}.teacher-footer{gap:7px}.teacher-footer button{padding:12px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<style>html, body, #root {
+      margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0;
+      
+    }
+html,body,#root{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html,body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Helvetica Neue,Arial,sans-serif!important}button,input,textarea,select{font-family:inherit}html{background-color:transparent}html.chatgptOled.dark,html.mobileSkybridge.dark{background-color:#000}@supports (font: -apple-system-body){html.mobileSkybridge{font:-apple-system-body}}html.desktopSkybridge.dark{background-color:#1e1e1e}html.transparentSkybridgeBackground,html.transparentSkybridgeBackground.dark{background-color:transparent}html.androidSkybridge,html.androidSkybridge body,html.androidSkybridge *{-webkit-tap-highlight-color:rgba(255,255,255,0)}html.androidSkybridge *::selection,html.androidSkybridge *::-moz-selection{background:#fff0;color:inherit}</style></head>
+<body>
+<canvas id="world" aria-label="可以旋转和缩放的迷你超市场景"></canvas><div class="vignette"></div>
+<header><div class="brand"><div class="logo">▥</div><div><b>迷你超市</b><small>用数学，找到回家的密码</small></div></div><div class="header-actions"><button class="btn" id="teacherBtn">教师编辑</button><button class="btn" id="helpBtn">玩法说明</button><button class="btn" id="restartBtn">重新开始</button></div></header>
+<aside class="panel"><div class="eyebrow">今天的小挑战</div><h1>买完东西，<br>一起找出口！</h1><p>自动门暂时锁上了。完成六个数学任务，收集数字，让门重新打开吧。</p><div class="mission-list" id="missions"></div></aside>
+<div id="labels"></div><div id="tooltip" role="tooltip"></div>
+<div class="tools"><button class="btn" id="turnLeft" aria-label="向左转动视角">↶</button><button class="btn" id="zoomIn" aria-label="放大">＋</button><button class="btn" id="zoomOut" aria-label="缩小">－</button><button class="btn" id="homeBtn" aria-label="恢复初始视角">⌂</button></div>
+<div class="bottom"><div class="guidance">拖动旋转 · 滚轮或双指缩放<br>点击发光物品、编号或左侧任务开始答题</div><div class="inventory"><div class="inv-title">出口密码<small id="progress">已完成 0 / 6</small></div><div class="digits" id="digits"></div><button class="primary exit-btn" id="exitBtn">打开出口</button></div></div>
+<div class="overlay" id="puzzle" role="dialog" aria-modal="true" aria-labelledby="puzzleTitle"><div class="card"><div class="art" id="puzzleArt"></div><div class="card-body"><div class="eyebrow" id="puzzleNumber"></div><h2 id="puzzleTitle"></h2><div class="task-type" id="puzzleType"></div><div class="question" id="question"></div><form id="answerForm" novalidate=""><label class="answer-label" for="answer">请输入答案</label><div class="answer-row"><input id="answer" inputmode="numeric" autocomplete="off" maxlength="20" placeholder="请输入答案"><button type="button" class="primary" id="submitAnswer">提交答案</button></div></form><div class="feedback" id="feedback" aria-live="polite"></div><div class="hints" id="hints"></div><div class="solved-badge" id="solvedBadge"></div><button type="button" class="return" data-close="">← 返回超市</button></div></div></div>
+<div class="overlay" id="lock" role="dialog" aria-modal="true" aria-labelledby="lockTitle"><div class="card simple"><button class="close" data-close="" aria-label="返回超市">×</button><div class="bigicon">⌑</div><div class="eyebrow">最后一步</div><h2 id="lockTitle">打开超市出口</h2><p>把六个数字按任务 1 至 6 的顺序排列，<br>输入密码，让自动门打开吧！</p><div class="smallnote" id="lockProgress"></div><form id="lockForm" novalidate=""><label class="answer-label" for="code">请输入六位数字密码</label><input id="code" class="lock-input" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="······"><button type="button" class="primary" id="unlockBtn">确认开门</button></form><div class="feedback" id="lockFeedback" aria-live="polite"></div><button type="button" class="return" data-close="">← 返回超市</button></div></div>
+<div class="overlay" id="help" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="card simple help-card"><button class="close" data-close="" aria-label="返回超市">×</button><div class="eyebrow">欢迎来到迷你超市</div><h2 id="helpTitle">一起来玩吧！</h2><p>① 拖动屏幕旋转视角；滚轮或双指可以缩放。视角会留在超市里面。<br>② 找到六个带编号的物品，点击物品、编号或左侧任务。<br>③ 读题，输入数字，再按「提交答案」。答错没关系，每次都会获得提示，最多三条。<br>④ 答对后获得一位密码，数字会放在对应的格子里。<br>⑤ 全部完成后，点击出口门或「打开出口」，输入六位密码。</p><p>进度会保存在当前浏览器。按键盘 Esc 或「返回超市」可以关闭卡片。</p><button type="button" class="primary" data-close="">我知道了，开始探索！</button></div></div>
+<div class="overlay" id="win" role="dialog" aria-modal="true" aria-labelledby="winTitle"><div class="card simple win-card"><div class="bigicon">★</div><div class="eyebrow">六个任务，全部完成</div><h2 id="winTitle">你成功打开出口了！</h2><p>加一加、减一减，乘与除也难不倒你。<br>谢谢你帮迷你超市解开了密码！</p><p id="winCode"></p><button type="button" class="primary" id="playAgain">再挑战一次</button><button type="button" class="return" data-close="">返回超市，继续看看</button></div></div>
+<div id="toast" role="status"></div>
+<div id="loading"><div class="load-logo">▥</div><h2>迷你超市准备中</h2><p id="loadText">正在摆好货架、点亮灯光……<br>首次打开需要联网加载三维组件。</p><button type="button" class="btn" id="reloadBtn" hidden="">重新加载</button></div>
+<div class="overlay" id="teacher" role="dialog" aria-modal="true" aria-labelledby="teacherTitle"><div class="card teacher-card"><button type="button" class="close" data-close="" aria-label="返回超市">×</button><div class="eyebrow">老师的备课桌</div><h2 id="teacherTitle">让超市任务配合你的课堂</h2><p class="teacher-intro">选择一个物品，修改题目、正确答案、三级提示和密码数字。支持华文及英文题目。切换物品会保留草稿；关闭编辑器会放弃未保存的修改。保存并试玩会重置当前游戏进度；下载新版 HTML 会把六道题完整放进文件，方便上传 GitHub 或分享给学生。</p><div id="teacherTabs" class="teacher-tabs" role="tablist" aria-label="选择要编辑的任务"></div><section id="teacherFields" class="teacher-fields" role="tabpanel"><label>卡片标题<input id="editTitle" maxlength="80"></label><label>数学内容<input id="editTopic" maxlength="80" placeholder="例如：乘法与减法"></label><label class="wide">数学题目<textarea id="editQuestion" rows="3" maxlength="3000"></textarea></label><label>正确答案<input id="editAnswer" inputmode="decimal" maxlength="40"><small>填写一个数字，支持负数及小数。例如：8、-2、3.5。</small></label><label>答对获得的密码数字<input id="editDigit" inputmode="numeric" maxlength="1"><small>只能填写 0 至 9 的一位数字，密码按任务顺序自动组合。</small></label><div class="teacher-hints"><label>提示 1 · 第一次答错<textarea id="editHint0" maxlength="1000"></textarea></label><label>提示 2 · 第二次答错<textarea id="editHint1" maxlength="1000"></textarea></label><label>提示 3 · 第三次答错<textarea id="editHint2" maxlength="1000"></textarea></label></div></section><div class="teacher-password">当前草稿的出口密码：<strong id="teacherPassword"></strong></div><div class="teacher-footer"><button type="button" class="primary" id="saveLesson">保存并试玩</button><button type="button" class="btn" id="downloadLesson">下载新版 HTML</button><button type="button" class="btn" id="restoreLesson">使用原有六题</button><button type="button" class="return" data-close="">返回超市</button></div><div id="teacherMessage" class="teacher-message" role="status"></div><p class="teacher-note">保存仅影响当前浏览器，不会自动修改 GitHub 网页。发布新题目时，请下载新版文件，上传并覆盖仓库的 index.html。教师编辑不设登录保护，文件包含答案与编辑入口。</p><details class="teacher-backup"><summary>无法下载？使用备用保存方式</summary><p class="teacher-usage">先点击「生成备用网页代码」，再点击文本框，按 Ctrl+A 和 Ctrl+C。粘贴到 Windows 记事本，另存为 index.html，保存类型选「所有文件」，编码选 UTF-8。</p><button type="button" class="btn" id="generateBackup">生成备用网页代码</button><textarea id="backupSource" class="copy-source" readonly="" aria-label="备用完整网页代码" placeholder="点击上面的按钮生成"></textarea></details></div></div>
+<script id="lessonData" type="application/json">[{"name":"购物篮","english":"Shopping Basket","type":"加法","answer":8,"digit":"8","kind":"basket","question":"购物篮里有3个红苹果和5个青苹果，一共有多少个苹果？","hints":["想一想，需要把红苹果和青苹果的数量合起来。","可以用加法计算：3＋5。","从3开始，往后数5个数，最后会数到几？"],"title":"购物篮"},{"name":"收银机","english":"Cash Register","type":"减法与找钱","answer":4,"digit":"4","kind":"register","question":"你付了RM10，商品的价格是RM6，应该找回多少令吉？只需输入数字。","hints":["找回的钱，就是你付的钱扣除商品价格后剩下的钱。","可以用减法计算：10－6。","从6往上数到10，一共需要数几步？"],"title":"收银机"},{"name":"牛奶货架","english":"Milk Shelf","type":"乘法与相同组数","answer":9,"digit":"9","kind":"milk","question":"货架共有3层，每层放着3盒牛奶，一共有多少盒牛奶？","hints":["每层的牛奶数量相同，一共有3层。","可以用重复加法计算：3＋3＋3。","前两层共有6盒牛奶，再加上最后一层的3盒，一共有多少盒？"],"title":"牛奶货架"},{"name":"饼干礼盒","english":"Cookie Gift Box","type":"除法与平均分配","answer":6,"digit":"6","kind":"cookies","question":"把18块饼干平均装进3个礼盒，每个礼盒有多少块饼干？","hints":["平均分配表示每个礼盒里的饼干数量必须相同。","用饼干总数除以礼盒数量：18÷3。","想一想：3乘以几等于18？"],"title":"饼干礼盒"},{"name":"促销牌","english":"Special Offer","type":"乘法与减法","answer":5,"digit":"5","kind":"sale","question":"你买了2本笔记本，每本RM4，再使用一张可扣除RM3的优惠券。你需要付多少令吉？只需输入数字。","hints":["先算出两本笔记本的总价，再扣除优惠金额。","先计算2×4，再减去3。","两本笔记本共RM8，使用优惠券后，计算8－3。"],"title":"促销牌"},{"name":"补货纸箱","english":"Juice Carton","type":"乘法与减法","answer":2,"digit":"2","kind":"carton","question":"纸箱里有4包果汁，每包有3盒。卖出10盒后，还剩下多少盒果汁？","hints":["先算出原本一共有多少盒果汁。","先计算4×3，再减去卖出的10盒。","原本共有12盒果汁，卖出10盒后，计算12－10。"],"title":"补货纸箱"}]</script>
+<script type="module">
+const originalPage=document.documentElement.cloneNode(true);
+const defaultTasks=[
+{name:'购物篮',english:'Shopping Basket',type:'加法',answer:8,digit:'8',kind:'basket',question:'购物篮里有3个红苹果和5个青苹果，一共有多少个苹果？',hints:['想一想，需要把红苹果和青苹果的数量合起来。','可以用加法计算：3＋5。','从3开始，往后数5个数，最后会数到几？']},
+{name:'收银机',english:'Cash Register',type:'减法与找钱',answer:4,digit:'4',kind:'register',question:'你付了RM10，商品的价格是RM6，应该找回多少令吉？只需输入数字。',hints:['找回的钱，就是你付的钱扣除商品价格后剩下的钱。','可以用减法计算：10－6。','从6往上数到10，一共需要数几步？']},
+{name:'牛奶货架',english:'Milk Shelf',type:'乘法与相同组数',answer:9,digit:'9',kind:'milk',question:'货架共有3层，每层放着3盒牛奶，一共有多少盒牛奶？',hints:['每层的牛奶数量相同，一共有3层。','可以用重复加法计算：3＋3＋3。','前两层共有6盒牛奶，再加上最后一层的3盒，一共有多少盒？']},
+{name:'饼干礼盒',english:'Cookie Gift Box',type:'除法与平均分配',answer:6,digit:'6',kind:'cookies',question:'把18块饼干平均装进3个礼盒，每个礼盒有多少块饼干？',hints:['平均分配表示每个礼盒里的饼干数量必须相同。','用饼干总数除以礼盒数量：18÷3。','想一想：3乘以几等于18？']},
+{name:'促销牌',english:'Special Offer',type:'乘法与减法',answer:5,digit:'5',kind:'sale',question:'你买了2本笔记本，每本RM4，再使用一张可扣除RM3的优惠券。你需要付多少令吉？只需输入数字。',hints:['先算出两本笔记本的总价，再扣除优惠金额。','先计算2×4，再减去3。','两本笔记本共RM8，使用优惠券后，计算8－3。']},
+{name:'补货纸箱',english:'Juice Carton',type:'乘法与减法',answer:2,digit:'2',kind:'carton',question:'纸箱里有4包果汁，每包有3盒。卖出10盒后，还剩下多少盒果汁？',hints:['先算出原本一共有多少盒果汁。','先计算4×3，再减去卖出的10盒。','原本共有12盒果汁，卖出10盒后，计算12－10。']}
+];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+function validLesson(data){return Array.isArray(data)&&data.length===6&&data.every(t=>t&&typeof t.title==='string'&&t.title.trim()&&t.title.length<=80&&typeof t.type==='string'&&t.type.trim()&&t.type.length<=80&&typeof t.question==='string'&&t.question.trim()&&t.question.length<=3000&&typeof t.answer==='number'&&Number.isFinite(t.answer)&&typeof t.digit==='string'&&/^[0-9]$/.test(t.digit)&&Array.isArray(t.hints)&&t.hints.length===3&&t.hints.every(h=>typeof h==='string'&&h.trim()&&h.length<=1000))}
+function copyLesson(data){return data.map((t,i)=>({...defaultTasks[i],title:t.title||t.name,type:t.type,question:t.question,answer:t.answer,digit:t.digit,hints:[...t.hints]}))}
+function lessonHash(data){let hash=2166136261;for(const char of JSON.stringify(data))hash=Math.imul(hash^char.charCodeAt(0),16777619);return(hash>>>0).toString(16)}
+let embedded=null;try{embedded=JSON.parse($('#lessonData').textContent)}catch{}
+const baseLesson=validLesson(embedded)?copyLesson(embedded):copyLesson(defaultTasks);
+const lessonKey='mini-market-lesson-'+lessonHash(baseLesson);
+let edited=null;try{edited=JSON.parse(localStorage.getItem(lessonKey)||'null')}catch{}
+const tasks=validLesson(edited)?copyLesson(edited):copyLesson(baseLesson);
+let KEY='mini-market-progress-'+lessonHash(tasks);
+let stored={};try{stored=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch{}
+const state={solved:Array.from({length:6},(_,i)=>stored.solved?.[i]===true),attempts:Array.from({length:6},(_,i)=>Number.isInteger(stored.attempts?.[i])?Math.max(0,stored.attempts[i]):0),escaped:false};
+state.escaped=stored.escaped===true&&state.solved.every(Boolean);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch{}}
+function numberValue(value){const text=value.normalize('NFKC').trim();const number=Number(text);return /^[+-]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(text)&&Number.isFinite(number)?number:null}
+const art=content=>`<svg viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg"><ellipse cx="130" cy="205" rx="88" ry="13" fill="#80946c" opacity=".16"/>${content}</svg>`;
+const illustrations={
+basket:art('<path d="M56 108h148l-19 85H75z" fill="#e7b85f"/><path d="M78 110q7-84 52-84t52 84" fill="none" stroke="#6c9b7d" stroke-width="11"/><g stroke="#ffedbe" stroke-width="6"><path d="M92 126l5 49m31-49v49m34-49-5 49M78 145h107m-103 22h99"/></g><g fill="#d97764"><circle cx="88" cy="100" r="20"/><circle cx="122" cy="94" r="20"/><circle cx="106" cy="116" r="19"/></g><g fill="#99b66b"><circle cx="159" cy="95" r="22"/><circle cx="179" cy="116" r="17"/><circle cx="144" cy="118" r="19"/></g>'),
+register:art('<path d="M56 140h149v49H56z" fill="#80ab95"/><rect x="74" y="75" width="112" height="75" rx="9" fill="#a9c6b2"/><rect x="85" y="86" width="90" height="35" rx="4" fill="#3e665c"/><text x="130" y="110" fill="#d9efb3" text-anchor="middle" font-size="21" font-family="sans-serif">RM 6</text><rect x="67" y="154" width="126" height="21" rx="4" fill="#527f6c"/><path d="M102 133h15m11 0h15m11 0h15" stroke="#f4f0d5" stroke-width="8"/><path d="M190 61h-56v-29h56z" fill="#fff8df"/><text x="162" y="52" font-size="14" fill="#768656" text-anchor="middle">RM10</text>'),
+milk:art('<rect x="44" y="45" width="172" height="151" rx="5" fill="#91b5b1"/><g fill="#e6efdf"><path d="M52 90h156v8H52zM52 139h156v8H52zM52 188h156v8H52z"/></g><defs><g id="m"><path d="M0 11L9 0h18l9 11v32H0z" fill="#faf8e9"/><path d="M0 11h36v12H0z" fill="#8bb8c6"/><path d="M9 0v11h27L27 0z" fill="#c6dddf"/></g></defs><use href="#m" x="59" y="48"/><use href="#m" x="112" y="48"/><use href="#m" x="165" y="48"/><use href="#m" x="59" y="97"/><use href="#m" x="112" y="97"/><use href="#m" x="165" y="97"/><use href="#m" x="59" y="146"/><use href="#m" x="112" y="146"/><use href="#m" x="165" y="146"/>'),
+cookies:art('<path d="M51 104h157v86H51z" fill="#d6a279"/><path d="M43 91h173v23H43z" fill="#f0c496"/><path d="M116 91h26v99h-26z" fill="#97b98a"/><path d="M129 92c-59-45-65 10 0 0 61-47 67 10 0 0" fill="none" stroke="#7eaa78" stroke-width="9"/><g fill="#e0b573" stroke="#b18853" stroke-width="2"><circle cx="89" cy="57" r="20"/><circle cx="132" cy="49" r="20"/><circle cx="176" cy="60" r="20"/></g><g fill="#8e6745"><circle cx="84" cy="52" r="3"/><circle cx="94" cy="62" r="3"/><circle cx="128" cy="43" r="3"/><circle cx="139" cy="53" r="3"/><circle cx="170" cy="56" r="3"/><circle cx="182" cy="65" r="3"/></g>'),
+sale:art('<path d="M94 192l33-91 34 91M130 111v87" stroke="#8f9d75" stroke-width="9" fill="none"/><rect x="56" y="40" width="150" height="112" rx="13" fill="#ebbc66"/><rect x="66" y="50" width="130" height="92" rx="8" fill="#fff1c6"/><text x="131" y="85" text-anchor="middle" fill="#7a8c53" font-size="18" font-family="sans-serif">2 × RM4</text><text x="131" y="122" text-anchor="middle" fill="#c67b51" font-size="24" font-family="sans-serif">− RM3</text>'),
+carton:art('<path d="M59 97h142v93H59z" fill="#c79c6c"/><path d="M59 97l-24-29h68l26 29M129 97l25-29h68l-21 29" fill="#e5bd89"/><path d="M129 98v91" stroke="#b38a5c" stroke-width="3"/><g><path d="M75 69l9-14h24l8 14v55H75z" fill="#fff1ce"/><path d="M75 84h41v27H75z" fill="#e6a16c"/><path d="M139 69l9-14h24l8 14v55h-41z" fill="#fff1ce"/><path d="M139 84h41v27h-41z" fill="#9cb978"/></g><path d="M83 153h30m-15-15v30M151 143h27v29h-27z" stroke="#f5dfb4" stroke-width="6" fill="none"/>')
+};
+$('#reloadBtn').onclick=()=>location.reload();
+let loadTimer=setTimeout(()=>{if($('#loading')){$('#loadText').textContent='加载时间较长，请确认可以访问 cdn.jsdelivr.net，再重新加载。';$('#reloadBtn').hidden=false}},15000);
+try{
+const THREE=await import('three');
+const [{OrbitControls},{GLTFLoader}]=await Promise.all([import('three/addons/controls/OrbitControls.js'),import('three/addons/loaders/GLTFLoader.js')]);
+const renderer=new THREE.WebGLRenderer({canvas:$('#world'),antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);renderer.setClearColor(0xe8f1e5);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;
+const scene=new THREE.Scene();scene.background=new THREE.Color(0xeaf1df);
+const camera=new THREE.PerspectiveCamera(68,innerWidth/innerHeight,.08,70);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.075;controls.enablePan=false;controls.minDistance=2.7;controls.maxDistance=4.3;controls.minPolarAngle=.92;controls.maxPolarAngle=1.52;controls.minAzimuthAngle=-Math.PI*.46;controls.maxAzimuthAngle=Math.PI*.46;controls.rotateSpeed=.5;controls.zoomSpeed=.7;controls.target.set(0,1.5,0);camera.position.set(0,3.4,3.65);controls.update();
+const home={position:camera.position.clone(),target:controls.target.clone()};
+scene.add(new THREE.HemisphereLight(0xfff9df,0xc9dcbd,2.7));
+const sun=new THREE.DirectionalLight(0xffecc3,3.4);sun.position.set(-3,9,5);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-9,right:9,top:8,bottom:-8,near:.5,far:30});sun.shadow.normalBias=.035;scene.add(sun);scene.add(new THREE.AmbientLight(0xffffff,.4));
+const room=new THREE.Group();scene.add(room);
+const material=color=>new THREE.MeshStandardMaterial({color,roughness:.82,flatShading:true});
+const M={floor:material(0xf2eedb),wall:material(0xfff8e8),mint:material(0x8dbca5),dark:material(0x426f61),wood:material(0xd7b88c),cream:material(0xfff6df),yellow:material(0xf2cb71),pink:material(0xdfaa9b),blue:material(0x9cc5d0),green:material(0x9fb775),red:material(0xd98772),brown:material(0xb88b60),ink:material(0x46665c),white:material(0xfffdf2)};
+function mesh(geometry,mat,x,y,z,parent=room){const o=new THREE.Mesh(geometry,mat);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;parent.add(o);return o}
+const box=(w,h,d,m,x,y,z,p=room)=>mesh(new THREE.BoxGeometry(w,h,d),m,x,y,z,p);
+const cylinder=(top,bottom,h,m,x,y,z,n=12,p=room)=>mesh(new THREE.CylinderGeometry(top,bottom,h,n),m,x,y,z,p);
+function sign(text,w,h,bg='#67977f',fg='#fff9df',fontSize=62){const c=document.createElement('canvas');c.width=768;c.height=384;const ctx=c.getContext('2d');ctx.fillStyle=bg;ctx.fillRect(0,0,768,384);ctx.fillStyle=fg;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=`bold ${fontSize}px "Microsoft YaHei",sans-serif`;const lines=text.split('\n');lines.forEach((line,i)=>ctx.fillText(line,384,192+(i-(lines.length-1)/2)*95));const texture=new THREE.CanvasTexture(c);texture.colorSpace=THREE.SRGBColorSpace;return new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({map:texture,roughness:.85}))}
+function wallSign(text,w,h,x,y,z,bg,fg){const s=sign(text,w,h,bg,fg);s.position.set(x,y,z);room.add(s);return s}
+// 完整围墙；相机始终限制在墙内。
+box(12,.2,10,M.floor,0,-.12,0);box(12,4.8,.18,M.wall,0,2.4,-5);box(.18,4.8,10,M.wall,-6,2.4,0);box(.18,4.8,10,M.wall,6,2.4,0);box(12,4.8,.18,M.wall,0,2.4,5);box(12,.55,.1,M.mint,0,.28,-4.87);box(.1,.55,10,M.mint,-5.87,.28,0);box(.1,.55,10,M.mint,5.87,.28,0);box(12,.55,.1,M.mint,0,.28,4.87);
+for(let x=-6;x<=6;x++)box(.016,.006,10,material(0xe1dfcc),x,.001,0);for(let z=-5;z<=5;z++)box(12,.006,.016,material(0xe1dfcc),0,.002,z);
+wallSign('迷你超市',3.1,.72,0,4.12,-4.87,'#75a68d','#fff6ce');wallSign('每天都有新发现',2,.35,0,3.51,-4.87,'#fff8e8','#819975');
+// 左侧明亮窗景。
+box(.07,2.1,3.1,M.blue,-5.86,2.8,.7);for(let z of [-.85,.7,2.25])box(.15,2.25,.07,M.white,-5.76,2.8,z);box(.15,.07,3.2,M.white,-5.76,2.8,.7);box(.35,.12,3.35,M.wood,-5.68,1.72,.7);
+const windowSun=mesh(new THREE.CircleGeometry(.38,24),M.yellow,-5.71,3.25,1.5);windowSun.rotation.y=Math.PI/2;
+// 六个任务组，分别设置点击范围与标签位置。
+const objects=[],labelAnchors=[],rings=[],taskButtons=[],taskMarkers=[];
+function taskGroup(i,x,y,z,labelHeight=.8){const g=new THREE.Group();g.position.set(x,y,z);g.userData.task=i;room.add(g);objects[i]=g;const anchor=new THREE.Object3D();anchor.position.set(0,labelHeight,0);g.add(anchor);labelAnchors[i]=anchor;return g}
+function beacon(i,x,z){const ring=mesh(new THREE.TorusGeometry(.48,.025,6,36),material(0xeac66e),x,.055,z);ring.rotation.x=-Math.PI/2;ring.material.emissive=new THREE.Color(0xe8c564);ring.material.emissiveIntensity=.12;rings[i]=ring}
+function carton(x,y,z,color,parent=room,scale=1){const g=new THREE.Group();g.position.set(x,y,z);g.scale.setScalar(scale);parent.add(g);box(.29,.48,.29,M.white,0,.24,0,g);box(.3,.15,.3,color,0,.18,0,g);const roof=mesh(new THREE.CylinderGeometry(.21,.21,.16,3),M.white,0,.54,0,g);roof.rotation.z=Math.PI/2;roof.rotation.y=Math.PI/4;box(.12,.055,.23,color,0,.64,0,g);return g}
+// 1. 购物篮：3个红苹果和5个青苹果。
+const basket=taskGroup(0,-2.1,.55,1.25,.94);box(1.35,.85,.9,M.wood,-2.1,.44,1.25);box(1.55,.1,1.12,M.cream,-2.1,.9,1.25);
+basket.position.y=.96;box(.9,.09,.65,M.yellow,0,.04,0,basket);for(let x of [-.43,.43])box(.055,.34,.68,M.yellow,x,.2,0,basket);for(let z of [-.31,.31]){box(.9,.08,.035,M.yellow,0,.35,z,basket);for(let x=-.35;x<=.36;x+=.14)box(.035,.3,.035,M.yellow,x,.21,z,basket)}
+const basketHandle=mesh(new THREE.TorusGeometry(.34,.027,6,24,Math.PI),M.dark,0,.36,0,basket);basketHandle.rotation.y=Math.PI/2;
+for(let i=0;i<8;i++){const x=(i%4-1.5)*.19,z=(Math.floor(i/4)-.5)*.24;mesh(new THREE.IcosahedronGeometry(.13,1),i<3?M.red:M.green,x,.25,z,basket);box(.025,.09,.025,M.brown,x,.39,z,basket)}beacon(0,-2.1,1.25);
+wallSign('新鲜水果',1.3,.38,-3.8,2.8,-4.86,'#e9ba76','#6d6342');
+// 2. 收银台。
+box(1.8,1.13,1.03,M.mint,3.65,.56,1.65);box(2,.16,1.22,M.cream,3.65,1.2,1.65);for(let x=2.87;x<4.5;x+=.22)box(.045,.88,.025,M.white,x,.62,2.18);const register=taskGroup(1,3.65,1.3,1.65,.83);box(.82,.2,.65,M.dark,0,.1,0,register);box(.63,.38,.42,M.mint,0,.37,-.08,register);box(.48,.22,.035,M.ink,0,.46,.15,register);const screen=sign('RM 6',.43,.17,'#42675c','#fff0ae',85);screen.position.set(0,.47,.172);register.add(screen);for(let i=0;i<6;i++)box(.08,.025,.07,M.cream,-.18+(i%3)*.18,.225,.15+Math.floor(i/3)*.1,register);box(.52,.025,.3,M.pink,-.55,.01,.1,register);beacon(1,3.65,1.65);
+// 3. 牛奶货架：3层，每层3盒。
+const milk=taskGroup(2,-3.85,0,-3.85,2.77);box(1.7,2.5,.65,M.blue,0,1.25,-.25,milk);for(let x of [-.88,.88])box(.1,2.65,.95,M.mint,x,1.32,0,milk);for(let y of [.2,.98,1.76]){box(1.84,.08,.98,M.cream,0,y,0,milk);for(let x of [-.53,0,.53])carton(x,y+.05,0,M.blue,milk,.9)}const milkSign=sign('牛奶区',1.65,.35,'#80afbc','#fff8e4');milkSign.position.set(0,2.65,.25);milk.add(milkSign);beacon(2,-3.85,-3.15);
+// 4. 饼干礼盒。
+box(1.75,1.1,1.05,M.pink,-.95,.55,-3.2);box(1.9,.12,1.17,M.cream,-.95,1.15,-3.2);const cookies=taskGroup(3,-.95,1.23,-3.2,.95);for(let i=0;i<3;i++){const x=(i-1)*.51;box(.44,.38,.48,M.wood,x,.19,0,cookies);box(.48,.08,.52,M.yellow,x,.42,0,cookies);box(.065,.4,.49,M.pink,x,.2,.008,cookies);box(.48,.085,.065,M.pink,x,.43,0,cookies);for(let j=0;j<2;j++){const cookie=cylinder(.1,.1,.035,M.brown,x+(j-.5)*.16,.49,.03,12,cookies);for(let k=0;k<3;k++)mesh(new THREE.IcosahedronGeometry(.015,0),M.ink,x+(j-.5)*.16+Math.cos(k*2)*.05,.516,.03+Math.sin(k*2)*.05,cookies)}}const cookieSign=sign('饼干区',1.4,.36,'#dbaa98','#fff9e4');cookieSign.position.set(0,.91,-.21);cookies.add(cookieSign);beacon(3,-.95,-2.47);
+// 5. 促销展示区。
+box(1.55,.68,1.05,M.yellow,1.9,.34,-1.8);box(1.7,.1,1.2,M.cream,1.9,.73,-1.8);const sale=taskGroup(4,1.9,.8,-1.8,1.45);box(.065,.82,.065,M.dark,0,.45,-.08,sale);box(1.02,.75,.09,M.pink,0,1,-.08,sale);const promo=sign('优惠 RM3\n笔记本 RM4',.94,.66,'#fff0c9','#b97c49',64);promo.position.set(0,1,-.025);sale.add(promo);for(let i=0;i<2;i++){box(.43,.07,.55,i?M.blue:M.green,(i-.5)*.56,.06,.08,sale);box(.39,.035,.52,M.white,(i-.5)*.56,.08,.08,sale)}beacon(4,1.9,-1.05);
+// 6. 补货纸箱。
+const stock=taskGroup(5,4.75,0,-2.4,1.48);box(1.1,.72,.8,M.brown,0,.36,0,stock);box(.035,.75,.81,M.wood,0,.36,0,stock);for(let x of [-.52,.52]){const flap=box(.35,.035,.8,M.wood,x,.78,0,stock);flap.rotation.z=x<0?-.5:.5}for(let i=0;i<4;i++)carton((i%2-.5)*.43,.52,(Math.floor(i/2)-.5)*.3,i%2?M.green:M.yellow,stock,.58);const stockSign=sign('果汁补货',.76,.28,'#c59a69','#fff3ce');stockSign.position.set(0,.36,.407);stock.add(stockSign);box(.82,.55,.7,M.wood,4.85,.28,-3.55);beacon(5,4.75,-1.77);
+// 普通商品架、盆栽与装饰。
+function shelf(x,z,rotation=0){const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=rotation;room.add(g);box(1.8,1.9,.5,M.wood,0,1,-.23,g);for(let y of [.2,.85,1.5]){box(1.9,.08,.85,M.cream,0,y,0,g);for(let i=0;i<5;i++)box(.22,.34,.27,[M.pink,M.green,M.yellow,M.blue][i%4],(i-2)*.34,y+.21,0,g)}for(let a of [-.93,.93])box(.08,2.05,.83,M.mint,a,1,0,g)}shelf(-4.8,3.78);shelf(4.8,3.8,Math.PI);
+function plant(x,z){cylinder(.28,.22,.44,M.pink,x,.22,z);for(let i=0;i<5;i++){const a=i*2.4;const l=mesh(new THREE.IcosahedronGeometry(.29,0),i%2?M.green:M.mint,x+Math.cos(a)*.15,.65+(i%3)*.14,z+Math.sin(a)*.15);l.scale.set(.6,1.5,.7)}}plant(-5,-1.1);plant(5.1,.1);
+wallSign('开心购物 · 快乐学习',2.3,.45,3,3.8,-4.86,'#fff8e8','#8aa47b');
+// 自动门和门外的明亮色块。
+box(2.5,3.25,.14,M.mint,2.05,1.64,-4.83);box(2.23,2.96,.05,M.blue,2.05,1.52,-4.72);const doorway=new THREE.Group();doorway.position.set(2.05,0,-4.58);doorway.userData.exit=true;room.add(doorway);const leftDoor=new THREE.Group(),rightDoor=new THREE.Group();doorway.add(leftDoor,rightDoor);for(const [g,x] of [[leftDoor,-.55],[rightDoor,.55]]){box(1.04,2.85,.1,M.blue,x,1.5,0,g);for(let dx of [-.5,.5])box(.045,2.9,.12,M.white,x+dx,1.5,.02,g);for(let y of [.08,2.92])box(1.07,.055,.12,M.white,x,y,.02,g);box(.055,.42,.08,M.yellow,x+(x<0?.34:-.34),1.4,.09,g)}wallSign('出口',2.3,.42,2.05,3.38,-4.68,'#64967b','#fff9dc');const doorAnchor=new THREE.Object3D();doorAnchor.position.set(0,2.3,.12);doorway.add(doorAnchor);
+// GLTFLoader 实际加载内嵌的低多边形星形标识，无需外部模型文件。
+const starVertices=[];for(let i=0;i<10;i++){const a=i*Math.PI/5,b=(i+1)*Math.PI/5,r=i%2?.12:.25,r2=(i+1)%2?.12:.25;starVertices.push(0,0,.055,Math.sin(a)*r,Math.cos(a)*r,0,Math.sin(b)*r2,Math.cos(b)*r2,0)}const floats=new Float32Array(starVertices);let bytes='';for(const b of new Uint8Array(floats.buffer))bytes+=String.fromCharCode(b);const embedded={asset:{version:'2.0'},scene:0,scenes:[{nodes:[0]}],nodes:[{mesh:0}],meshes:[{primitives:[{attributes:{POSITION:0},material:0}]}],materials:[{doubleSided:true,pbrMetallicRoughness:{baseColorFactor:[1,.78,.3,1],metallicFactor:0,roughnessFactor:.8}}],buffers:[{byteLength:floats.byteLength,uri:'data:application/octet-stream;base64,'+btoa(bytes)}],bufferViews:[{buffer:0,byteLength:floats.byteLength}],accessors:[{bufferView:0,componentType:5126,count:floats.length/3,type:'VEC3',min:[-.25,-.25,0],max:[.25,.25,.055]}]};const gltfReady=new Promise((resolve,reject)=>new GLTFLoader().parse(JSON.stringify(embedded),'',resolve,reject));const starScene=await gltfReady;for(let i=0;i<6;i++){const star=starScene.scene.clone(true);star.position.copy(labelAnchors[i].position);star.position.y-=.18;star.scale.setScalar(.55);objects[i].add(star);taskMarkers[i]=star}
+// 缓存独立材质，让悬停发光只作用于当前物品。
+objects.forEach(g=>g.traverse(o=>{if(o.isMesh){o.material=o.material.clone();o.userData.baseEmissive=o.material.emissive.clone();o.userData.baseIntensity=o.material.emissiveIntensity}}));
+const labels=[];for(let i=0;i<6;i++){const b=document.createElement('button');b.className='hotspot';b.innerHTML=`<span>${i+1}</span>${tasks[i].name}`;b.setAttribute('aria-label',`任务${i+1}：${tasks[i].name}`);b.onclick=()=>openTask(i);$('#labels').append(b);labels[i]=b;const m=document.createElement('button');m.className='mission';m.innerHTML=`<span class="n">${i+1}</span><span>${tasks[i].name}</span><span class="status">待探索</span>`;m.onclick=()=>openTask(i);$('#missions').append(m);taskButtons[i]=m}
+const doorLabel=document.createElement('button');doorLabel.className='hotspot';doorLabel.innerHTML='<span>↗</span>出口门';doorLabel.onclick=openLock;$('#labels').append(doorLabel);
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let activeTask=-1,hovered=-1,transition=null,returnView=null,modalTimer=null,lastFocus=null,toastTimer=null,opening=false;
+function moveTo(position,target,duration=650){transition={from:camera.position.clone(),to:position.clone(),targetFrom:controls.target.clone(),targetTo:target.clone(),start:performance.now(),duration:reduced?1:duration}}
+function ui(){const count=state.solved.filter(Boolean).length;$('#progress').textContent=`已完成 ${count} / 6`;$('#digits').innerHTML=tasks.map((t,i)=>`<div class="digit ${state.solved[i]?'found':''}" aria-label="第${i+1}位密码${state.solved[i]?'是'+t.digit:'尚未获得'}"><small>${i+1}</small>${state.solved[i]?t.digit:'·'}</div>`).join('');state.solved.forEach((done,i)=>{labels[i].classList.toggle('done',done);labels[i].querySelector('span').textContent=done?'✓':String(i+1);taskButtons[i].classList.toggle('done',done);taskButtons[i].querySelector('.n').textContent=done?'✓':String(i+1);taskButtons[i].querySelector('.status').textContent=done?'已完成':'待探索';rings[i].material.color.setHex(done?0x79ab7c:0xeac66e);rings[i].material.emissive.setHex(done?0x86b77c:0xe8c564)});save()}
+function toast(text){$('#toast').textContent=text;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),3500)}
+function highlight(index){if(hovered===index)return;if(hovered>=0)objects[hovered].traverse(o=>{if(o.isMesh){o.material.emissive.copy(o.userData.baseEmissive);o.material.emissiveIntensity=o.userData.baseIntensity}});hovered=index;if(index>=0)objects[index].traverse(o=>{if(o.isMesh){o.material.emissive.setHex(0xe7c766);o.material.emissiveIntensity=.3}})}
+function captureView(){returnView={position:camera.position.clone(),target:controls.target.clone()};lastFocus=document.activeElement;controls.enabled=false;highlight(-1);$('#tooltip').style.display='none';$('#labels').style.visibility='hidden'}
+function showModal(id){$$('.overlay').forEach(e=>e.classList.remove('open'));$(id).classList.add('open');setTimeout(()=>$(id).querySelector('input:not(:disabled),button:not(:disabled)')?.focus(),40)}
+function closeModal(){clearTimeout(modalTimer);modalTimer=null;opening=false;$$('.overlay').forEach(e=>e.classList.remove('open'));$('#labels').style.visibility='';if(returnView){moveTo(returnView.position,returnView.target);returnView=null}controls.enabled=true;if(lastFocus instanceof HTMLElement)lastFocus.focus()}
+function openTask(i){if(opening||$('.overlay.open'))return;opening=true;activeTask=i;captureView();const point=new THREE.Vector3();objects[i].getWorldPosition(point);point.y+=i===2?1.25:.45;const inward=new THREE.Vector3(-point.x,0,-point.z).normalize();const dest=point.clone().addScaledVector(inward,2.9);dest.y=Math.max(point.y+.9,2.4);dest.set(THREE.MathUtils.clamp(dest.x,-5.3,5.3),THREE.MathUtils.clamp(dest.y,.8,4.15),THREE.MathUtils.clamp(dest.z,-4.3,4.3));moveTo(dest,point,620);modalTimer=setTimeout(()=>{const t=tasks[i];$('#puzzleNumber').textContent=`数学任务 ${i+1} / 6`;$('#puzzleTitle').textContent=t.title||t.name;$('#puzzleType').textContent=t.type;$('#question').textContent=t.question;$('#puzzleArt').innerHTML=illustrations[t.kind]+`<small>${t.name}</small>`;$('#answer').value='';$('#answer').disabled=state.solved[i];$('#submitAnswer').disabled=state.solved[i];$('#feedback').classList.remove('error');$('#feedback').textContent=state.solved[i]?'答对了！你获得了一位密码！':'';renderHints();showModal('#puzzle');opening=false;modalTimer=null},reduced?20:640)}
+function renderHints(){const i=activeTask;$('#hints').replaceChildren(...tasks[i].hints.slice(0,Math.min(3,state.attempts[i])).map((text,j)=>{const row=document.createElement('div');row.className='hint';const b=document.createElement('b');b.textContent=`提示 ${j+1}`;const span=document.createElement('span');span.textContent=text;row.append(b,span);return row}));$('#solvedBadge').textContent=state.solved[i]?`✓ 已完成 · 第${i+1}位密码：${tasks[i].digit}`:state.attempts[i]>=3?'三条提示都在这里，可以继续尝试。':''}
+function submitAnswer(e){e.preventDefault();if(activeTask<0||state.solved[activeTask])return;const input=$('#answer').value;if(!input.trim()){$('#feedback').textContent='请先输入答案。';$('#feedback').classList.add('error');$('#answer').focus();return}const value=numberValue(input);if(value===null){$('#feedback').textContent='请输入数字，例如：8、-2 或 3.5。';$('#feedback').classList.add('error');return}if(value===tasks[activeTask].answer){state.solved[activeTask]=true;$('#answer').disabled=true;$('#submitAnswer').disabled=true;$('#feedback').classList.remove('error');$('#feedback').textContent='答对了！你获得了一位密码！';ui();renderHints();if(state.solved.every(Boolean))toast('六位密码集齐了！返回超市，打开出口吧！')}else{state.attempts[activeTask]++;$('#feedback').classList.add('error');$('#feedback').textContent='再试一次！看看下面的提示。';renderHints();save();$('#answer').select()}}
+function openLock(){if(opening||$('.overlay.open'))return;captureView();$('#code').value='';$('#lockProgress').textContent=`已收集 ${state.solved.filter(Boolean).length} / 6 位密码`;$('#lockFeedback').textContent=state.escaped?'出口已经打开，做得好！':'';showModal('#lock')}
+function unlock(e){e.preventDefault();$('#lockFeedback').classList.add('error');if(!state.solved.every(Boolean)){$('#lockFeedback').textContent='还有任务没有完成。先收集全部六位密码吧！';return}const code=$('#code').value.normalize('NFKC').trim();if(!/^\d{6}$/.test(code)){$('#lockFeedback').textContent='请输入完整的六位数字密码。';return}if(code!==tasks.map(t=>t.digit).join('')){$('#lockFeedback').textContent='密码还不对，请按任务1至6的顺序再检查一次。';$('#code').select();return}state.escaped=true;save();$$('.overlay').forEach(e=>e.classList.remove('open'));opening=true;toast('咔哒！自动门打开了！');const target=new THREE.Vector3(2.05,1.5,-4.55);moveTo(new THREE.Vector3(1.6,2.5,-1.5),target,850);modalTimer=setTimeout(()=>{$('#winCode').textContent='你找到的出口密码：'+tasks.map(t=>t.digit).join('');showModal('#win');opening=false;modalTimer=null},1100)}
+function restart(){clearTimeout(modalTimer);opening=false;state.solved.fill(false);state.attempts.fill(0);state.escaped=false;activeTask=-1;ui();closeModal();moveTo(home.position,home.target);toast('新的挑战开始了，一起探索吧！')}
+$('#submitAnswer').onclick=submitAnswer;$('#answerForm').onsubmit=submitAnswer;$('#unlockBtn').onclick=unlock;$('#lockForm').onsubmit=unlock;for(const [id,fn] of [['#answer',submitAnswer],['#code',unlock]])$(id).addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();fn(e)}});$('#code').oninput=e=>{e.target.value=e.target.value.normalize('NFKC').replace(/\D/g,'').slice(0,6)};$$('[data-close]').forEach(b=>b.onclick=closeModal);$('#exitBtn').onclick=openLock;$('#helpBtn').onclick=()=>{if(opening||$('.overlay.open'))return;captureView();showModal('#help')};$('#restartBtn').onclick=restart;$('#playAgain').onclick=restart;
+function viewAction(fn){if(!controls.enabled||opening)return;fn()}
+$('#homeBtn').onclick=()=>viewAction(()=>moveTo(home.position,home.target));
+function zoom(scale){const delta=camera.position.clone().sub(controls.target);delta.setLength(THREE.MathUtils.clamp(delta.length()*scale,controls.minDistance,controls.maxDistance));moveTo(controls.target.clone().add(delta),controls.target,280)}
+$('#zoomIn').onclick=()=>viewAction(()=>zoom(.82));$('#zoomOut').onclick=()=>viewAction(()=>zoom(1.22));$('#turnLeft').onclick=()=>viewAction(()=>{const spherical=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));spherical.theta=THREE.MathUtils.clamp(spherical.theta-.35,controls.minAzimuthAngle,controls.maxAzimuthAngle);moveTo(new THREE.Vector3().setFromSpherical(spherical).add(controls.target),controls.target,300)});
+$$('.overlay').forEach(el=>el.addEventListener('pointerdown',e=>{if(e.target===el&&el.id!=='win')closeModal()}));document.addEventListener('keydown',e=>{const dialog=$('.overlay.open');if(e.key==='Escape'){if(dialog||opening)closeModal();return}if(e.key==='Tab'&&dialog){const items=[...dialog.querySelectorAll('button:not(:disabled):not([tabindex="-1"]),input:not(:disabled),textarea:not(:disabled),summary')];if(e.shiftKey&&document.activeElement===items[0]){e.preventDefault();items.at(-1).focus()}else if(!e.shiftKey&&document.activeElement===items.at(-1)){e.preventDefault();items[0].focus()}}});
+// 教师草稿与游戏中的题目分开，只有保存后才应用。
+let teacherDraft=[],teacherIndex=0;
+function readTeacherFields(){if(!teacherDraft.length)return;const t=teacherDraft[teacherIndex];t.title=$('#editTitle').value.trim();t.type=$('#editTopic').value.trim();t.question=$('#editQuestion').value.trim();t.answer=numberValue($('#editAnswer').value);t.digit=$('#editDigit').value.normalize('NFKC').trim();t.hints=[0,1,2].map(i=>$('#editHint'+i).value.trim());$('#teacherPassword').textContent=teacherDraft.map(t=>/^[0-9]$/.test(t.digit)?t.digit:'?').join('')}
+function showTeacherFields(index){teacherIndex=index;const t=teacherDraft[index];$('#editTitle').value=t.title;$('#editTopic').value=t.type;$('#editQuestion').value=t.question;$('#editAnswer').value=t.answer===null?'':String(t.answer);$('#editDigit').value=t.digit;t.hints.forEach((h,i)=>$('#editHint'+i).value=h);$$('#teacherTabs button').forEach((b,i)=>{b.setAttribute('aria-selected',String(i===index));b.tabIndex=i===index?0:-1});$('#teacherFields').setAttribute('aria-labelledby','teacherTab'+index);$('#teacherPassword').textContent=teacherDraft.map(t=>/^[0-9]$/.test(t.digit)?t.digit:'?').join('')}
+function openTeacher(){if(opening||$('.overlay.open'))return;teacherDraft=copyLesson(tasks);$('#teacherTabs').replaceChildren(...tasks.map((t,i)=>{const b=document.createElement('button');b.type='button';b.id='teacherTab'+i;b.setAttribute('role','tab');b.setAttribute('aria-controls','teacherFields');b.textContent=`${i+1} · ${t.name}`;b.onclick=()=>{readTeacherFields();showTeacherFields(i)};b.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?5:(i+(e.key==='ArrowRight'?1:5))%6;readTeacherFields();showTeacherFields(next);$('#teacherTab'+next).focus()};return b}));showTeacherFields(0);$('#teacherMessage').textContent='请选择任务并编辑。下载新版 HTML 不必先保存，文件会直接使用当前草稿。';$('#backupSource').value='';$('.teacher-backup').open=false;captureView();showModal('#teacher')}
+function validateTeacher(){readTeacherFields();for(let i=0;i<6;i++){if(!validLesson(teacherDraft.map((t,j)=>j===i?t:baseLesson[j]))){showTeacherFields(i);$('#teacherMessage').textContent=`第${i+1}题还没填好。请填写标题、数学内容、题目、数字答案、三条提示和一位密码数字。`;return false}}return true}
+function makeLessonHTML(data){if(!validLesson(data))throw new Error('题库格式不正确');const output=originalPage.cloneNode(true);output.querySelector('#lessonData').textContent=JSON.stringify(copyLesson(data)).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');return '<!DOCTYPE html>\n'+output.outerHTML}
+$('#teacherBtn').onclick=openTeacher;
+$$('#teacherFields input,#teacherFields textarea').forEach(el=>el.addEventListener('input',()=>{readTeacherFields();$('#teacherMessage').textContent='草稿已修改，尚未保存。';$('#backupSource').value=''}));
+$('#restoreLesson').onclick=()=>{teacherDraft=copyLesson(defaultTasks);showTeacherFields(0);$('#backupSource').value='';$('#teacherMessage').textContent='草稿已恢复为原有六道超市数学题，密码为849652。保存或下载后才会应用。'};
+$('#saveLesson').onclick=()=>{if(!validateTeacher())return;const next=copyLesson(teacherDraft);let persisted=true;try{localStorage.setItem(lessonKey,JSON.stringify(next))}catch{persisted=false}tasks.splice(0,6,...next);KEY='mini-market-progress-'+lessonHash(tasks);restart();toast(persisted?'题库已保存，进度已重置。可以开始试玩！':'题库已应用，但浏览器无法保存。请下载新版 HTML 保留修改。')};
+$('#downloadLesson').onclick=()=>{if(!validateTeacher())return;try{const blob=new Blob([makeLessonHTML(teacherDraft)],{type:'text/html;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='index.html';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);$('#teacherMessage').textContent='已请求下载新版 index.html，内含当前六道题。请在浏览器下载列表查看，再上传 GitHub 覆盖旧文件。若没有下载，请使用下方备用保存方式。'}catch(e){$('#teacherMessage').textContent='下载未成功，请使用下方备用保存方式。'}};
+$('#generateBackup').onclick=()=>{if(!validateTeacher())return;$('#backupSource').value=makeLessonHTML(teacherDraft);$('#backupSource').focus();$('#backupSource').select();$('#teacherMessage').textContent='备用代码已生成并选中。按 Ctrl+C 复制，粘贴到记事本后另存为 index.html。'};
+const raycaster=new THREE.Raycaster(),pointer=new THREE.Vector2();
+function hitAt(x,y){pointer.set(x/innerWidth*2-1,-y/innerHeight*2+1);raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObjects(room.children,true)[0];if(!hit)return null;let object=hit.object;while(object&&object!==room){if(Number.isInteger(object.userData.task))return{task:object.userData.task};if(object.userData.exit)return{exit:true};object=object.parent}return null}
+let down=null;const touches=new Set();let multiTouch=false;
+renderer.domElement.addEventListener('pointerdown',e=>{touches.add(e.pointerId);if(touches.size>1)multiTouch=true;down={x:e.clientX,y:e.clientY,time:performance.now(),id:e.pointerId}});
+renderer.domElement.addEventListener('pointerup',e=>{const tap=down&&!multiTouch&&down.id===e.pointerId&&Math.hypot(e.clientX-down.x,e.clientY-down.y)<7&&performance.now()-down.time<650;touches.delete(e.pointerId);if(!touches.size)multiTouch=false;down=null;if(tap&&controls.enabled&&!transition&&!opening){const hit=hitAt(e.clientX,e.clientY);if(hit?.exit)openLock();else if(hit&&Number.isInteger(hit.task))openTask(hit.task)}});
+renderer.domElement.addEventListener('pointercancel',e=>{touches.delete(e.pointerId);down=null;if(!touches.size)multiTouch=false});
+renderer.domElement.addEventListener('pointermove',e=>{if(e.pointerType==='touch'||!controls.enabled||opening)return;const hit=hitAt(e.clientX,e.clientY);const i=hit&&Number.isInteger(hit.task)?hit.task:-1;highlight(i);const tooltip=$('#tooltip');tooltip.style.display=i>=0||hit?.exit?'block':'none';tooltip.textContent=i>=0?tasks[i].name+(state.solved[i]?' · 已完成':''):hit?.exit?'出口门':'';tooltip.style.left=Math.min(e.clientX+15,innerWidth-155)+'px';tooltip.style.top=Math.min(e.clientY+18,innerHeight-55)+'px';renderer.domElement.style.cursor=hit?'pointer':'grab'});
+renderer.domElement.addEventListener('pointerleave',()=>{highlight(-1);$('#tooltip').style.display='none'});
+labels.forEach((b,i)=>{b.onpointerenter=()=>{if(controls.enabled)highlight(i)};b.onpointerleave=()=>highlight(-1)});
+controls.addEventListener('start',()=>{transition=null;highlight(-1);$('#tooltip').style.display='none'});
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2))});
+const v=new THREE.Vector3();
+function positionLabel(label,anchor){anchor.getWorldPosition(v);v.project(camera);const x=(v.x*.5+.5)*innerWidth,y=(-v.y*.5+.5)*innerHeight;label.style.left=x+'px';label.style.top=y+'px';const side=innerWidth<=600?146:innerWidth<=850?175:245;label.classList.toggle('hidden',v.z>1||v.z< -1||x<side||x>innerWidth-15||y<90||y>innerHeight-110)}
+let previous=performance.now();
+function frame(now){requestAnimationFrame(frame);const dt=Math.min(.05,(now-previous)/1000);previous=now;if(transition){const t=Math.min(1,(now-transition.start)/transition.duration),k=t*t*(3-2*t);camera.position.lerpVectors(transition.from,transition.to,k);controls.target.lerpVectors(transition.targetFrom,transition.targetTo,k);if(t===1)transition=null}else if(controls.enabled)controls.update();camera.position.x=THREE.MathUtils.clamp(camera.position.x,-5.4,5.4);camera.position.z=THREE.MathUtils.clamp(camera.position.z,-4.4,4.4);camera.position.y=THREE.MathUtils.clamp(camera.position.y,.65,4.25);camera.lookAt(controls.target);const speed=reduced?1:Math.min(1,dt*4);leftDoor.position.x=THREE.MathUtils.lerp(leftDoor.position.x,state.escaped?-.97:0,speed);rightDoor.position.x=THREE.MathUtils.lerp(rightDoor.position.x,state.escaped?.97:0,speed);rings.forEach(r=>r.material.emissiveIntensity=reduced?.12:.14+Math.sin(now*.002)*.065);scene.updateMatrixWorld();labelAnchors.forEach((a,i)=>positionLabel(labels[i],a));positionLabel(doorLabel,doorAnchor);renderer.render(scene,camera)}
+ui();requestAnimationFrame(frame);clearTimeout(loadTimer);$('#loading').remove();
+}catch(error){clearTimeout(loadTimer);console.error(error);$('#loadText').textContent='暂时无法打开三维超市。请使用新版 Edge 或 Chrome，保持联网，并确认浏览器支持 WebGL。若网络无法连接 cdn.jsdelivr.net，三维组件也无法加载。';$('#reloadBtn').hidden=false}
+</script>
+
+<script>globalThis.__codexVisualizationInitialGlobals={"statePersistence":"none","stateModelContext":"none","visualizationStyleVariables":{"--accent":"rgb(232, 243, 254)","--accent-foreground":"rgb(44, 103, 197)","--background":"rgb(252, 252, 252)","--border":"rgba(0, 0, 0, 0.1)","--border-strong":"rgba(0, 0, 0, 0.15)","--card":"color-mix(in oklab, rgb(13, 13, 13) 5%, transparent)","--card-foreground":"rgb(13, 13, 13)","--corner-shape":"round","--control-spacing":"12px","--cursor-interaction":"pointer","--destructive":"rgb(226, 85, 7)","--font-mono":"ui-monospace, SFMono-Regular, \"SF Mono\", menlo, consolas, \"Liberation Mono\", monospace","--font-sans":"-apple-system-body, ui-sans-serif, -apple-system, system-ui, \"Segoe UI\", Helvetica, \"Apple Color Emoji\", Arial, sans-serif, \"Segoe UI Emoji\", \"Segoe UI Symbol\"","--font-size-base":"16px","--font-weight-normal":"400","--foreground":"rgb(13, 13, 13)","--input":"rgba(0, 0, 0, 0.15)","--muted":"color-mix(in srgb, rgb(13, 13, 13) 10%, transparent)","--muted-foreground":"rgb(143, 143, 143)","--popover":"rgb(255, 255, 255)","--popover-foreground":"rgb(13, 13, 13)","--primary":"rgb(44, 103, 197)","--primary-foreground":"rgb(255, 255, 255)","--radius":"8px","--radius-2xl":"16px","--radius-lg":"8px","--radius-md":"6px","--radius-sm":"4px","--ring":"rgb(58, 131, 247)","--secondary":"rgb(243, 243, 243)","--secondary-foreground":"rgb(13, 13, 13)","--blue":"rgb(58, 131, 247)","--orange":"rgb(226, 85, 7)","--green":"rgb(0, 162, 64)","--red":"rgb(224, 46, 42)","--purple":"rgb(146, 79, 247)","--yellow":"rgb(255, 195, 0)","--visualize-paint-gutter":"0px","--viz-series-1":"rgb(44, 103, 197)","--viz-series-2":"#f3c944","--viz-series-3":"#ea77b0","--viz-series-4":"#3db9b0","--viz-series-5":"#5ec978","--viz-series-6":"#f2893c"},"visualizationTheme":"light"};</script>
+<style id="codex-visualization-host-theme">:root {}</style>
+<script>
+(() => {
+  // Host colors are defaults; later authored styles can give the same names
+  // their own meaning (for example, --muted as a chart's label color).
+  const hostStyles = document.getElementById("codex-visualization-host-theme");
+  const hostStyle = hostStyles.sheet.cssRules[0].style;
+  // Typography, geometry and interaction cursors still follow the host.
+  const styleForProperty = (property) =>
+    /^--(?:font-|radius|corner-shape$|control-spacing$|cursor-interaction$|icon-size$|visualize-paint-gutter$)/.test(property)
+      ? document.documentElement.style
+      : hostStyle;
+  const initialGlobals =
+    globalThis.__codexVisualizationInitialGlobals ?? globalThis.openai;
+  delete globalThis.__codexVisualizationInitialGlobals;
+  if (initialGlobals?.statePersistence != null) {
+    globalThis.openai ??= {};
+    globalThis.openai.statePersistence = initialGlobals.statePersistence;
+    globalThis.openai.stateModelContext = initialGlobals.stateModelContext ?? "none";
+  }
+  if (!false) {
+    return;
+  }
+  let appliedProperties = [];
+  const applyHostStyleVariables = (styleVariables) => {
+    if (styleVariables == null || typeof styleVariables !== "object") {
+      return;
+    }
+    for (const property of appliedProperties) {
+      styleForProperty(property).removeProperty(property);
+    }
+    appliedProperties = [];
+    for (const [property, value] of Object.entries(styleVariables)) {
+      if (property.startsWith("--") && typeof value === "string") {
+        styleForProperty(property).setProperty(property, value);
+        appliedProperties.push(property);
+      }
+    }
+  };
+
+  const syncHostStyles = (globals) => {
+    applyHostStyleVariables(globals?.visualizationStyleVariables);
+    const sandboxDocument = globalThis.frameElement?.ownerDocument;
+    if (sandboxDocument != null && globals?.visualizationTheme != null) {
+      let colorSchemeMeta = sandboxDocument.querySelector(
+        'meta[name="color-scheme"]',
+      );
+      if (colorSchemeMeta == null) {
+        colorSchemeMeta = sandboxDocument.createElement("meta");
+        colorSchemeMeta.name = "color-scheme";
+        sandboxDocument.head.appendChild(colorSchemeMeta);
+      }
+      colorSchemeMeta.content = globals.visualizationTheme;
+      sandboxDocument.documentElement.style.colorScheme =
+        globals.visualizationTheme;
+      // Paint the host surface behind transparent saved visualization documents.
+      sandboxDocument.documentElement.style.backgroundColor =
+        hostStyle.getPropertyValue("--background");
+    }
+  };
+
+  syncHostStyles(initialGlobals);
+  globalThis.addEventListener("openai:set_globals", (event) => {
+    syncHostStyles(event.detail?.globals);
+  });
+})();
+</script>
+<script>
+(() => {
+  const reportEnvironmentError = (value) => {
+    const error = value instanceof Error ? value : new Error(String(value));
+    void globalThis.openai
+      .callTool(
+        "__codex_inline_visualization_error__",
+        {
+          message: error.message,
+          name: error.name,
+          stack: error.stack,
+        },
+      )
+      .catch(() => {});
+  };
+
+  globalThis.addEventListener("error", (event) => {
+    reportEnvironmentError(event.error ?? event.message);
+  });
+  globalThis.addEventListener("unhandledrejection", (event) => {
+    reportEnvironmentError(event.reason);
+  });
+})();
+</script>
+<script id="codex-visualization-variants">
+(() => {
+  let previousSnapshot = "[]";
+  let roots = [];
+  const report = () => {
+    roots = Array.from(
+      document.querySelectorAll(".viz-carousel[data-active-variant]"),
+    ).slice(0, 32);
+    const selectedVariants = roots.flatMap((root, carousel) => {
+      const variant = root.dataset.activeVariant;
+      const label = root.getAttribute("aria-label")?.slice(0, 256);
+      return variant ? [{
+        carousel,
+        ...(label == null ? {} : { label }),
+        variant: variant.slice(0, 256),
+      }] : [];
+    });
+    const snapshot = JSON.stringify(selectedVariants);
+    if (snapshot !== previousSnapshot) {
+      previousSnapshot = snapshot;
+      void globalThis.openai.callTool("__codex_visualization_annotations__", {
+        type: "variants",
+        selectedVariants,
+      }).catch(() => {});
+    }
+  };
+  const observer = new MutationObserver((records) => {
+    if (records.some((record) => record.type === "attributes") || roots.some((root) => !root.isConnected)) {
+      report();
+    }
+  });
+  observer.observe(document, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["data-active-variant"],
+  });
+  report();
+  globalThis.addEventListener("pagehide", () => observer.disconnect(), { once: true });
+})();
+</script>
+<script>
+(() => {
+  let isHovering = false;
+  let isTouch = false;
+  const reportHover = (nextIsHovering, nextIsTouch = false) => {
+    if (nextIsHovering === isHovering && nextIsTouch === isTouch) {
+      return;
+    }
+    isHovering = nextIsHovering;
+    isTouch = nextIsTouch;
+    void globalThis.openai
+      .callTool(
+        "__codex_inline_visualization_hover__",
+        isTouch ? { isHovering, pointerType: "touch" } : { isHovering },
+      )
+      .catch(() => {});
+  };
+
+  globalThis.addEventListener(
+    "pointerover",
+    (event) =>
+      reportHover(event.pointerType !== "touch", event.pointerType === "touch"),
+    { capture: true },
+  );
+  globalThis.addEventListener(
+    "pointerout",
+    (event) => {
+      if (event.pointerType !== "touch" && event.relatedTarget == null) {
+        reportHover(false);
+      }
+    },
+    { capture: true },
+  );
+})();
+</script>
+<script>
+(() => {
+  const bubbledClicks = new WeakSet();
+  const interactiveSelector = [
+    "button", "input", "select", "textarea", "label", "summary", "a[href]",
+    "audio[controls]", "video[controls]", "[onclick]", "[data-visualization-interactive]",
+    '[contenteditable]:not([contenteditable="false"])',
+    ...[
+      "button", "checkbox", "combobox", "gridcell", "link", "listbox",
+      "menuitem", "menuitemcheckbox", "menuitemradio", "option", "radio",
+      "scrollbar", "searchbox", "slider", "spinbutton", "switch", "tab",
+      "textbox", "treeitem",
+    ].map((role) => '[role~="' + role + '"]'),
+  ].join(",");
+
+  globalThis.addEventListener("click", (event) => bubbledClicks.add(event));
+  globalThis.addEventListener("click", (event) => {
+    // Capture the path before a control can remove itself. Custom delegated
+    // controls can opt in with data-visualization-interactive.
+    const elements = event.composedPath().filter((target) => target instanceof Element);
+    const isInteractiveTarget = elements.some((element) =>
+      element.matches(interactiveSelector) ||
+      (element.hasAttribute("tabindex") && element.tabIndex >= 0)) ||
+      (elements[0] != null && getComputedStyle(elements[0]).cursor === "pointer");
+    // Use a task, not a microtask: native dispatch can run microtasks between
+    // listeners. Propagation flags are reset when dispatch finishes:
+    // https://dom.spec.whatwg.org/#concept-event-dispatch
+    globalThis.setTimeout(() => {
+      void globalThis.openai.callTool("__codex_inline_visualization_click__", {
+        isInteractive: isInteractiveTarget || event.defaultPrevented ||
+          (event.bubbles && !bubbledClicks.has(event)),
+      }).catch(() => {});
+    }, 0);
+  }, { capture: true });
+})();
+</script>
+<script>
+(() => {
+  globalThis.addEventListener("keydown", (event) => {
+    if (event.isComposing || event.altKey || event.ctrlKey || event.metaKey ||
+      event.shiftKey || !["ArrowLeft", "ArrowRight", "Escape"].includes(event.key)) {
+      return;
+    }
+    const target = event.composedPath().find((element) => element instanceof HTMLElement);
+    const editable = target?.closest("[contenteditable]");
+    const editing = target && (target.isContentEditable ||
+      (editable && editable.getAttribute("contenteditable") !== "false") ||
+      target.closest('input, textarea, select, [role="slider"], [role="spinbutton"], [role="combobox"], [role="listbox"], [role="grid"], [role="tree"], [role="tablist"], [role="menu"]'));
+    if (event.key !== "Escape" && editing) { return; }
+    // Let the widget handle the key before forwarding it across the sandbox.
+    globalThis.setTimeout(() => {
+      if (!event.defaultPrevented && globalThis.openai?.displayMode === "fullscreen") {
+        void globalThis.openai.callTool("__codex_inline_visualization_preview_key__", {
+          key: event.key,
+        }).catch(() => {});
+      }
+    }, 0);
+  });
+})();
+</script>
+
+
+
+
+<script>
+(() => {
+  const contentRange = document.createRange();
+  let previousMeasurement = null;
+  let heightReportTimer = null;
+  const reportHeight = () => {
+    const bodyChildren = Array.from(document.body.children).filter(
+      (element) =>
+        element.tagName !== "SCRIPT" &&
+        element.tagName !== "STYLE" &&
+        element.getAttribute("role") !== "tooltip",
+    );
+    const bodyStyle = globalThis.getComputedStyle(document.body);
+    const contentWidth = Math.max(
+      0,
+      Math.round(
+        globalThis.innerWidth -
+          parseFloat(bodyStyle.paddingLeft) -
+          parseFloat(bodyStyle.paddingRight),
+      ),
+    );
+    let contentHeight;
+    if (bodyChildren.length === 0) {
+      contentRange.selectNodeContents(document.body);
+      contentHeight = contentRange.getBoundingClientRect().height;
+    } else if (bodyChildren.length === 1) {
+      const [bodyChild] = bodyChildren;
+      const childRect = bodyChild.getBoundingClientRect();
+      // Child margins can collapse above the root without adding to its height.
+      // The host adds body padding separately.
+      contentHeight =
+        Math.max(bodyChild.scrollHeight, childRect.height) +
+        Math.max(
+          0,
+          childRect.top -
+            document.body.getBoundingClientRect().top -
+            parseFloat(bodyStyle.paddingTop),
+        );
+    } else {
+      const bodyTop = document.body.getBoundingClientRect().top;
+      contentHeight = Math.max(
+        ...bodyChildren.map(
+          (bodyChild) => bodyChild.getBoundingClientRect().bottom - bodyTop,
+        ),
+      );
+    }
+    const viewportHeight = globalThis.innerHeight;
+    const previous = previousMeasurement;
+    previousMeasurement = { contentHeight, contentWidth, viewportHeight };
+    if (
+      previous != null &&
+      contentWidth === previous.contentWidth &&
+      contentHeight - previous.contentHeight ===
+        viewportHeight - previous.viewportHeight
+    ) {
+      return;
+    }
+
+    void globalThis.openai
+      .callTool(
+        "__codex_inline_visualization_height__",
+        { height: contentHeight, width: contentWidth },
+      )
+      .catch(() => {});
+  };
+  const scheduleHeightReport = () => {
+    if (heightReportTimer != null) {
+      return;
+    }
+    // Offscreen frames can suspend animation callbacks while their content loads.
+    heightReportTimer = globalThis.setTimeout(() => {
+      heightReportTimer = null;
+      reportHeight();
+    }, 0);
+  };
+
+  const resizeObserver = new ResizeObserver(scheduleHeightReport);
+  const observeBodyChildren = () => {
+    for (const element of document.body.children) {
+      resizeObserver.observe(element);
+    }
+  };
+  resizeObserver.observe(document.body);
+  observeBodyChildren();
+  new MutationObserver(() => {
+    observeBodyChildren();
+    scheduleHeightReport();
+  }).observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["style", "class", "height", "width"],
+  });
+  globalThis.addEventListener("resize", scheduleHeightReport);
+  reportHeight();
+})();
+</script>
+<style id="codex-visualization-document-scrollbar">html,body{scrollbar-width:none!important}html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}</style>
+
+
+
+</body></html>
